@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="My-Batis-Practice-000" target="14" />
+      <module name="MyBatis-01" target="14" />
+      <module name="MyBatis-02" target="14" />
+      <module name="MyBatis-03" target="14" />
+      <module name="MyBatis-04" target="14" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
