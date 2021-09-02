@@ -43,7 +43,6 @@ public class DP {
     /**
      * 解法二 ：双指针。
      */
-
     public static int trap2(int[] height) {
         int ans = 0;
         int left = 0, right = height.length - 1;
