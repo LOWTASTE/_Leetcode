@@ -1,10 +1,8 @@
-import javax.sound.midi.Soundbank;
-import java.lang.reflect.Array;
+package leetcode;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.temporal.TemporalAccessor;
 import java.util.*;
-import java.util.stream.Collectors;
 
 //Definition for singly-linked list.
 class ListNode {
@@ -17,10 +15,10 @@ class ListNode {
     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
 }
 
-//class TreeNode {
+//class leetcode.TreeNode {
 //    int val = 0;
-//    TreeNode left = null;
-//    TreeNode right = null;
+//    leetcode.TreeNode left = null;
+//    leetcode.TreeNode right = null;
 //}
 
 public class solution_NC {
@@ -790,7 +788,7 @@ public class solution_NC {
      * 给定一个二叉搜索树 root 和一个目标结果 k，如果 BST 中存在两个元素且它们的和等于给定的目标结果，则返回 true
      * 没考虑到节点重复的情况
      */
-/*    public static boolean findTarget(TreeNode root, int k) {
+/*    public static boolean findTarget(leetcode.TreeNode root, int k) {
         boolean res = false;
         HashSet<Integer> hashSet = new HashSet<>();
         preOrderTraversal(root,hashSet);
@@ -803,7 +801,7 @@ public class solution_NC {
         }
         return res;
     }
-    public static TreeNode preOrderTraversal(TreeNode root, HashSet<Integer> treeNodes){
+    public static leetcode.TreeNode preOrderTraversal(leetcode.TreeNode root, HashSet<Integer> treeNodes){
         if (root == null){
             return null;
         }

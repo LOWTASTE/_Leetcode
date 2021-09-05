@@ -28,11 +28,11 @@ public class NetEaseTest {
 ////        char a = 'a';
 ////        char z = 'z';
 ////        System.out.println( (int) z);
-//        Solution solution= new Solution();
+//        leetcode.Solution solution= new leetcode.Solution();
 //        System.out.println(solution.findString(4));
 //    }
 //
-//    public static class Solution {
+//    public static class leetcode.Solution {
 //        /**
 //         * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
 //         *
@@ -294,7 +294,7 @@ public class NetEaseTest {
 
 
 
-//    public static class Solution {
+//    public static class leetcode.Solution {
 //        /**
 //         * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
 //         * 水 0  2
