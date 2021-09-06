@@ -36,6 +36,9 @@ class UnionFind {
         // 附加
         personNums[rootX] += personNums[rootY];
     }
+
+
+
 }
 
 //现在有10^7个用户，编号为1 - 10^7，现在已知有m对关系，每一对关系给你两个数x和y，代表编号为x的用户和编号为y的用户是在一个圈子中，

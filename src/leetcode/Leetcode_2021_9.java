@@ -96,6 +96,9 @@ public class Leetcode_2021_9 {
     }
 
 
+
+
+
     public static void main(String[] args) {
 //        int[] temperatures = {73,74,75,71,69,72,76,73};
 //        System.out.println(Arrays.toString(dailyTemperatures(temperatures)));
@@ -104,7 +107,72 @@ public class Leetcode_2021_9 {
 //        int n = 2;
 //        System.out.println(leastInterval(strings, n));
 
-        int[] nums = {1,1,1,1,1};
-        System.out.println(findTargetSumWays(nums, 3));
+//        int[] nums = {1,1,1,1,1};
+//        System.out.println(findTargetSumWays(nums, 3));
+
+        Solution_9 solution_9 = new Solution_9();
+        int[] row = {0,1,2,5,6,4,7,8,9,3,10,11};
+        System.out.println(solution_9.minSwapsCouples(row));
     }
 }
+
+
+class Solution_9 {
+
+    public int minSwapsCouples(int[] row) {
+        int len = row.length;
+        // len / 2 组
+        int N = len / 2;
+        UnionFind unionFind = new UnionFind(N);
+        for (int i = 0; i < len; i += 2) {
+            unionFind.union(row[i] / 2, row[i + 1] / 2);
+        }
+        unionFind.printParent();
+        return N - unionFind.getCount();
+    }
+
+    private class UnionFind {
+
+        private int[] parent;
+
+        private int count;
+
+        public int getCount() {
+            return count;
+        }
+
+        public UnionFind(int n) {
+            this.count = n;
+            this.parent = new int[n];
+            for (int i = 0; i < n; i++) {
+                parent[i] = i;
+            }
+        }
+
+        public int find(int x) {
+            while (x != parent[x]) {
+                parent[x] = parent[parent[x]];
+                x = parent[x];
+            }
+           return x;
+        }
+
+        public void union(int x, int y) {
+            int rootX = find(x);
+            int rootY = find(y);
+            if (rootX == rootY) {
+                return;
+            }
+            parent[rootX] = rootY;
+            count--;
+        }
+        public void printParent(){
+            for (int i = 0; i < parent.length; i++) {
+                System.out.println(parent[i]);
+            }
+        }
+    }
+}
+
+
+
