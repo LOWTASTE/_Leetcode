@@ -629,9 +629,10 @@ public class DP {
 //        System.out.println(getRow(5));
 
 //        System.out.println(solveNQueens(5));
+//
+//        int[] people = {3,5,3,4};
+//        System.out.println(numRescueBoats(people, 5));
 
-        int[] people = {3,5,3,4};
-        System.out.println(numRescueBoats(people, 5));
     }
 
 }
