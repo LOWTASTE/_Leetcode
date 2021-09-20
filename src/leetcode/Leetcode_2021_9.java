@@ -4,6 +4,33 @@ import java.util.*;
 
 public class Leetcode_2021_9 {
 
+
+
+
+
+
+
+
+
+    public static void main(String[] args) {
+//        int[] temperatures = {73,74,75,71,69,72,76,73};
+//        System.out.println(Arrays.toString(dailyTemperatures(temperatures)));
+
+//        char[] strings = {'A','A','A','A','A','A','B','C','D','E','F','G'};
+//        int n = 2;
+//        System.out.println(leastInterval(strings, n));
+
+//        int[] nums = {1,1,1,1,1};
+//        System.out.println(findTargetSumWays(nums, 3));
+
+        Solution_9 solution_9 = new Solution_9();
+        int[] row = {0,1,2,5,6,4,7,8,9,3,10,11};
+        System.out.println(solution_9.minSwapsCouples(row));
+    }
+}
+
+
+class Solution_9 {
     // 环形链表2
     public static ListNode detectCycle(ListNode head) {
         ListNode pos = head;
@@ -96,31 +123,6 @@ public class Leetcode_2021_9 {
     }
 
 
-
-
-
-
-
-
-    public static void main(String[] args) {
-//        int[] temperatures = {73,74,75,71,69,72,76,73};
-//        System.out.println(Arrays.toString(dailyTemperatures(temperatures)));
-
-//        char[] strings = {'A','A','A','A','A','A','B','C','D','E','F','G'};
-//        int n = 2;
-//        System.out.println(leastInterval(strings, n));
-
-//        int[] nums = {1,1,1,1,1};
-//        System.out.println(findTargetSumWays(nums, 3));
-
-        Solution_9 solution_9 = new Solution_9();
-        int[] row = {0,1,2,5,6,4,7,8,9,3,10,11};
-        System.out.println(solution_9.minSwapsCouples(row));
-    }
-}
-
-
-class Solution_9 {
 
     public int minSwapsCouples(int[] row) {
         int len = row.length;

@@ -1,8 +1,5 @@
 package Pinduoudo;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-
 public class Main {
 // 3. 20%
 
@@ -146,34 +143,34 @@ public class Main {
 
 
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        // 测试用例数量
-        int T = scanner.nextInt();
-        if (T > 20 || T < 1){
-            return;
-        }
-        ArrayList<ArrayList<Integer>> arrayListArrayList = new ArrayList<>();
-        for (int i = 0; i < T; i++) {
-            ArrayList<Integer> arrayList = new ArrayList<>();
-            arrayList.add(scanner.nextInt());
-            arrayList.add(scanner.nextInt());
-            arrayListArrayList.add(arrayList);
-            arrayList.clear();
-        }
-    }
-
-    static void backTrace(int now,int target,Integer ans,int record){
-        if (target == now){
-            return;
-        }
-        else {
-            record++;
-            backTrace(now,target - 1,ans,record);
-            backTrace(now,target * 2,ans,record);
-            backTrace(now,target + 1,ans,record);
-            backTrace(now,target - 2,ans,record);
-        }
-        return;
-    }
+//    public static void main(String[] args) {
+//        Scanner scanner = new Scanner(System.in);
+//        // 测试用例数量
+//        int T = scanner.nextInt();
+//        if (T > 20 || T < 1){
+//            return;
+//        }
+//        ArrayList<ArrayList<Integer>> arrayListArrayList = new ArrayList<>();
+//        for (int i = 0; i < T; i++) {
+//            ArrayList<Integer> arrayList = new ArrayList<>();
+//            arrayList.add(scanner.nextInt());
+//            arrayList.add(scanner.nextInt());
+//            arrayListArrayList.add(arrayList);
+//            arrayList.clear();
+//        }
+//    }
+//
+//    static void backTrace(int now,int target,Integer ans,int record){
+//        if (target == now){
+//            return;
+//        }
+//        else {
+//            record++;
+//            backTrace(now,target - 1,ans,record);
+//            backTrace(now,target * 2,ans,record);
+//            backTrace(now,target + 1,ans,record);
+//            backTrace(now,target - 2,ans,record);
+//        }
+//        return;
+//    }
 }

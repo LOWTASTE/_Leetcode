@@ -32,6 +32,9 @@ public class SwordToOffer {
 //        int[][] input = {{1,2,5},{3,2,1}};
 //        System.out.println(solution.maxValue(input));
 
+        char[][] chars = new char[1][2];
+        System.out.println(chars.length);
+        System.out.println(chars[0].length);
     }
 }
 
@@ -317,5 +320,113 @@ class Solution {
             j = i; // j 指向下个单词的尾字符
         }
         return res.toString().trim(); // 转化为字符串并返回
+    }
+    /**
+     * 56 - 01
+     */
+//    先对所有数字进行一次异或，得到两个出现一次的数字的异或值。
+//    在异或结果中找到任意为 1 的位。
+//    根据这一位对所有的数字进行分组。
+//    在每个组内进行异或操作，得到两个数字。
+    public int[] singleNumbers(int[] nums) {
+        int ret = 0;
+        // 抑或两次得到自身
+        for (int n : nums) {
+            ret ^= n;
+        }
+        int div = 1;
+        while ((div & ret) == 0) {
+            div <<= 1;
+        }
+        int a = 0, b = 0;
+        for (int n : nums) {
+            if ((div & n) != 0) {
+                a ^= n;
+            } else {
+                b ^= n;
+            }
+        }
+        return new int[]{a, b};
+    }
+    /**
+     * 56 - 02
+     */
+    public int singleNumber(int[] nums) {
+        int ones = 0, twos = 0;
+        for(int num : nums){
+            ones = ones ^ num & ~twos;
+            twos = twos ^ num & ~ones;
+        }
+        return ones;
+    }
+    /**
+     * 11
+     */
+    public int minArray(int[] numbers) {
+        int i = 0, j = numbers.length - 1;
+        while (i < j) {
+            int m = (i + j) / 2;
+            if (numbers[m] > numbers[j]) i = m + 1;
+            else if (numbers[m] < numbers[j]) j = m;
+            else j--;
+        }
+        return numbers[i];
+    }
+
+    public int search(int[] nums, int target) {
+        int right = nums.length;
+        int left = 0;
+        int count = 0;
+        while (left < right){
+            int middle = (right + left) / 2;
+            if (nums[middle] >= target){
+                right = middle;
+            }
+            if (nums[middle] < target){
+                left = middle + 1;
+            }
+        }
+        while (left < nums.length&&nums[left++]==target){
+            count++;
+        }
+        return count;
+    }
+    /**
+     * 12
+     */
+    public boolean exist(char[][] board, String word) {
+        boolean ans;
+
+        return false;
+    }
+
+    /**
+     * @param board 字符矩阵
+     * @param flag 是否走过
+     * @param col 当前的列
+     * @param row 当前的行
+     * @param index 匹配到的单词的索引
+     * @param word 待匹配的单词
+     */
+
+    public void existHelper(char[][] board,int[][] flag,int col,int row,int index,String word,boolean result){
+        if (index == word.length()){
+            result = true;
+        }
+        if (col >= board.length || col < 0 || row >= board[0].length || row < 0){
+            return;
+        }
+        if (flag[col][row] == 1 || result){
+            return;
+        }
+        // 匹配
+        if (board[col][row] == word.charAt(index)){
+            // 表示被走过
+            flag[col][row] = 1;
+            existHelper(board, flag, col + 1, row, index + 1, word, false);
+            existHelper(board, flag, col, row + 1, index + 1, word, false);
+            existHelper(board, flag, col - 1, row, index + 1, word, false);
+            existHelper(board, flag, col, row - 1, index + 1, word, false);
+        }
     }
 }

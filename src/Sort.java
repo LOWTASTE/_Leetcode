@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Sort {
@@ -126,15 +125,11 @@ public class Sort {
         for (int j : arr_q) {
             System.out.print(j);
         }
-
         quickSort(arr_q,0,arr_q.length-1,true);
         System.out.println("\n快排排序如下T：");
         for (int j : arr_q) {
             System.out.print(j);
         }
-
-
-
         int[] arr_b = {20,85,30,68,57,46,81,54,18,99};
         bubbleSort(arr_b);
         System.out.println("\n冒泡排序如下：");
