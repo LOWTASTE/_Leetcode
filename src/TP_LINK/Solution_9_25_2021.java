@@ -1,6 +1,6 @@
 package TP_LINK;
 
-public class Practice {
+public class Solution_9_25_2021 {
 
 //    public static int ans = -1;
 //    public static void main(String[] args) {
@@ -55,7 +55,6 @@ public class Practice {
 //        }
 //        System.out.println(-1);
 //    }
-
 
 
 

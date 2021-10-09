@@ -41,10 +41,10 @@ class Solution1{
         for (int m = min;m < max;m++){
             int countFailed = 0;
             int countPass = 0;
-            for (int i = 0; i < a_i.length; i++) {
-                if (a_i[i] <= m){
+            for (int j : a_i) {
+                if (j <= m) {
                     ++countFailed;
-                }else {
+                } else {
                     ++countPass;
                 }
             }
@@ -332,7 +332,7 @@ class Solution5_1{
             // [left,right]中的元素轮流做根节点构建二叉树
             int leftCost = 0, rightCost = 0;
             for(int i = left; i <= right; i++){
-                leftCost = recur(left, i - 1, i);      // 左子树开销
+                leftCost = recur(left, i - 1, i);     // 左子树开销
                 rightCost = recur(i + 1, right, i);    // 右子树开销
                 // root=-1时表示初始根节点还没有确定，不会有根节点连接左右子树的边
                 cost = Math.min(cost, leftCost + rightCost + weight[i]*(root != -1? weight[root]: 0));
@@ -340,4 +340,158 @@ class Solution5_1{
             if(root >= 0) mem[left][right][root] = cost;
             return cost;
         }
+}
+
+//小美最近发现了一种有趣的游戏，给定一个队列q，小美会按照以下规则进行游戏：
+//每次从队列中取出一个数，如果这个数是当前队列中最小的值，那么小美就会丢掉这个数。
+//否则小美就会把这个数重新加入队列。
+//小美会一直进行游戏直到队列变空为止，但是小美并没有多少耐心，因此她想知道她最多需要进行多少次操作才能结束游戏。
+class Solution6{
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int len = scanner.nextInt();
+        int[] arr = new int[len];
+        int ans = 0;
+        Queue<Integer> queue = new LinkedList<>();
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = scanner.nextInt();
+            queue.add(arr[i]);
+        }
+        Arrays.sort(arr);
+        int pos = 0;
+        while (!queue.isEmpty()){
+            int tmp = queue.poll();
+            if (tmp == arr[pos]){
+                pos += 1;
+            }
+            else {
+                queue.offer(tmp);
+            }
+            ans++;
+        }
+        System.out.println(ans);
+    }
+}
+
+//小团作为一名美团骑手，最喜欢的颜色就是黄和黑，因此对包含这两种颜色的事物都格外留意。
+//这天他发现有一棵树，树上的每个节点都是黄的或者黑的。
+//现在小团想知道对于这棵树中的每个节点，在以其为根的子树中，所有与其颜色不同的节点的深度之和是多少。
+//子树中节点的深度被定义为该节点与该子树根节点之间的最短路径的边数。
+class Solution7{
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int len = scanner.nextInt();
+        int[] color = new int[len];
+        int[] parent = new int[len];
+        for (int i = 0; i < color.length; i++) {
+            color[i] = scanner.nextInt();
+        }
+        for (int i = 0; i < parent.length; i++) {
+            parent[i] = scanner.nextInt();
+        }
+
+    }
+}
+
+//第一行两个正整数N和P，N表示蟠桃的数量，P是王母娘娘还有多长时间后会回来。
+//接下来一行N个整数表示每个蟠桃吃掉所需的时间。
+//注意，掐着王母娘娘的回来的点吃完是很危险的，所以必须在王母娘娘回来前吃完，
+//不能是回来时刚好吃完。
+class Solution8{
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int len = scanner.nextInt();
+        long time = scanner.nextLong();
+        long[] peach = new long[len];
+        int ans = 0;
+        for (int i = 0; i < peach.length; i++) {
+            peach[i] = scanner.nextLong();
+        }
+        Arrays.sort(peach);
+        for (long j : peach) {
+            if (time - j > 0) {
+                ans++;
+                time = time - j;
+            } else {
+                break;
+            }
+        }
+        System.out.println(ans);
+    }
+}
+
+//小团正在装饰自己的书桌，他的书桌上从左到右有m个空位需要放上装饰物。
+//商店中每个整数价格的装饰物恰好有一种，且每种装饰物的数量无限多。
+//小团去商店的时候，想到了一个购买方案，他要让右边的装饰物价格是左边的倍数。
+//用数学语言来说，假设小团的m个装饰物价格为a_1,a_2,...,a_m，那么对于任意的1≤i≤j≤m，a_j是a_i的倍数。
+//小团是一个节约的人，他希望最贵的装饰物不超过n元。现在，请你计算小团有多少种购买的方案？
+class Solution9{
+
+    public static ArrayList<ArrayList<Integer>> arrayList = new ArrayList<>();
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        int m = scanner.nextInt();
+        ArrayList<Integer> tmp = new ArrayList<>();
+        backtrace(n,m,tmp);
+        System.out.println(arrayList.size());
+    }
+    public static void backtrace(int n,int m,ArrayList<Integer> tmp){
+        if (tmp.size() == m){
+            ArrayList<Integer> integerArrayList = new ArrayList<>(tmp);
+            arrayList.add(integerArrayList);
+            return;
+        }
+        // 倍数
+        for (int i = 1; i <= n; i++) {
+            // 基数
+            for (int j = 1; j <= n; j++) {
+                if (i * j > n){
+                    return;
+                }
+                tmp.add(i * j);
+                backtrace(n, m, tmp);
+                tmp.remove(tmp.size() - 1);
+            }
+        }
+    }
+}
+
+// 替换空格
+class Solution10{
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        char[] chars = {' ','a',' ','b','c',' ','\0'};
+        System.out.println(chars);
+        int len = chars.length;
+        int pos = 0;
+        int insert = 0;
+        int prev = 0; // 标记前一个是否' '
+        for (insert = 0; insert < chars.length; insert++) {
+            if (chars[insert] == '\0'){
+                break;
+            }
+            if (chars[insert] != ' ' || prev == 1){
+                prev = 1;
+                if (chars[insert] == ' '){
+                    prev = 0;
+                }
+                char tmp = chars[insert];
+                chars[insert] = chars[pos];
+                chars[pos] = tmp;
+                pos++;
+            }
+        }
+        int offset = 0;
+        for (int i = chars.length - 2; i >= 0; i--) {
+            if (chars[i] != ' '){
+                break;
+            }
+            offset++;
+        }
+        chars[chars.length - 1 - offset] = chars[chars.length - 1];
+        chars[chars.length - 1] = ' ';
+        System.out.println(chars);
+    }
 }

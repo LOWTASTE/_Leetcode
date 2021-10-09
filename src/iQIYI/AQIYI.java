@@ -1,9 +1,6 @@
-import java.util.ArrayList;
+package iQIYI;
+
 import java.util.Scanner;
-import java.util.function.IntConsumer;
-import java.util.Scanner;
-import java.util.concurrent.Semaphore;
-import java.util.function.IntConsumer;
 public class AQIYI {
 
 //    在监控与BI报表系统中，我们经常会采集数据指标进行分析，这里的数据往往都是时序数据，
@@ -57,9 +54,6 @@ public class AQIYI {
         int n =  Integer.parseInt(input[1]);
         System.out.println(n);
         // 皇后回溯？
-
-
-
     }
 
     public static void backtrace(int posX, int posY, int[][] output){
